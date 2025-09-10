@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #SBATCH --job-name=dinov3_demo2
-#SBATCH --partition=dev_gpu_il        # kleine Debug-Partition
-#SBATCH --gres=gpu:1
+#SBATCH --partition=dev_gpu_h100
+#SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
-#SBATCH --time=00:15:00               # kurz halten für schnelle Tests
-#SBATCH --output=slurm/%x_%j.out
+#SBATCH --mem=10G
+#SBATCH --time=47:59:59  
+#SBATCH --output=slurm/Job_%A_%a.out
 
 set -euo pipefail
 echo "[$(date)] Node: $(hostname)  JobID: ${SLURM_JOB_ID}"
@@ -21,6 +21,7 @@ export PYTHONUNBUFFERED=1
 
 mkdir -p outputs_dinov3
 
+# Skript starten
 python extract_dinov3_features.py \
   --images_dir ./data \
   --hf_model facebook/dinov3-vitb16-pretrain-lvd1689m \
