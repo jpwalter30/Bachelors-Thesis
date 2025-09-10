@@ -8,7 +8,6 @@ Optionally, a tiny **TabPFN demo** can be run (2 images per class, 2-shot train/
 ## Quick Start
 
 1. **Install**
-   ```bash
    python -m venv .venv && source .venv/bin/activate
    pip install --upgrade pip
    pip install -r requirements.txt
@@ -20,7 +19,10 @@ Optionally, a tiny **TabPFN demo** can be run (2 images per class, 2-shot train/
 
 3. **Freature extraction**
 # Feature extraction
-python extract_dinov3_features.py \ --images_dir ./data \ --hf_model facebook/dinov3-vitb16-pretrain-lvd1689m \ --out_dir ./outputs_dinov3
+python extract_dinov3_features.py \
+  --images_dir ./data \
+  --hf_model facebook/dinov3-vitb16-pretrain-lvd1689m \
+  --out_dir ./outputs_dinov3
 
 4. **Optional: Mini demo**
 
@@ -29,3 +31,6 @@ python extract_dinov3_features.py \
   --hf_model facebook/dinov3-vitb16-pretrain-lvd1689m \
   --out_dir ./outputs_dinov3 \
   --mode demo2
+
+
+  
