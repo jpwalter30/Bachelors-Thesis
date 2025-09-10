@@ -4,14 +4,15 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=10G
-#SBATCH --time=00:10:00  
+#SBATCH --time=47:59:59  
 #SBATCH --output=slurm/Job_%A_%a.out
 
 set -euo pipefail
 echo "[$(date)] Node: $(hostname)  JobID: ${SLURM_JOB_ID}"
 
 # Conda Env aktivieren
-source /pfs/work9/workspace/scratch/ma_jwaltea-bachelor_thesis_tabpfn/miniconda3/bin/activate tabpfn_demo
+source /pfs/work9/workspace/scratch/ma_jwaltea-bachelor_thesis_tabpfn/miniconda3/etc/profile.d/conda.sh
+conda activate tabpfn_demo
 
 # Caches ins Scratch legen
 export HF_HOME="${PWD}/.cache/huggingface"
@@ -20,6 +21,11 @@ export TORCH_HOME="${PWD}/.cache/torch"
 export PYTHONUNBUFFERED=1
 
 mkdir -p outputs_dinov3
+
+which python
+python -V
+python -c "import sys; print('PY:', sys.executable); import numpy, torch; print('numpy:', numpy.__version__); print('torch:', torch.__version__)"
+
 
 # Skript starten
 python extract_dinov3_features.py \
