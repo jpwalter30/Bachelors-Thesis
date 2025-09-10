@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=dinov3_demo2
-#SBATCH --partition=dev_gpu_4
+#SBATCH --partition=dev_gpu_il        # kleine Debug-Partition
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=55G
-#SBATCH --time=00:30:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=00:15:00               # kurz halten für schnelle Tests
 #SBATCH --output=slurm/%x_%j.out
 
 set -euo pipefail
